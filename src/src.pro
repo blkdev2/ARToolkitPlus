@@ -3,15 +3,25 @@
 # QMake definitions for library
 #
 
-include ($$(ARTKP)/build/linux/options.pro)
+ARTKP = $${_PRO_FILE_PWD_}/../
+
+unix:!macx {
+  include ($${ARTKP}/build/linux/options.pro)
+}
+
+macx {
+  include ($${ARTKP}/build/osx/options.pro)
+}
 
 TEMPLATE = lib
 
 TARGET   = ARToolKitPlus
 
-QMAKE_CLEAN = $$(ARTKP)/lib/*
+message($${ARTKP})
 
-DESTDIR  = $$(ARTKP)/lib
+QMAKE_CLEAN = $${ARTKP}/lib/*
+
+DESTDIR  = $${ARTKP}/lib
 
 debug {
   message("Building ARToolKitPlus in debug mode ...")

@@ -22,10 +22,6 @@ CONFIG		= debug
 equals(ARCH, x86_64) {
   # options for AMD64
 }
-else {
-#  QMAKE_CXXFLAGS      = -mtune=pentium4 -march=pentium4 -msse2 -msse -fpermissive
-  QMAKE_CXXFLAGS      = -mtune=pentium4 -march=pentium4 -msse2 -msse 
-}
 
 
 # ############################################################
@@ -34,17 +30,14 @@ else {
 
 VERSION         = 2.0.2
 
-UNAME           = $$system(uname -r)
-#message("Found kernel ($$UNAME) ...")
-
 LANGUAGE = C++
 
 debug {
-  OBJECTS_DIR     = $${ARTKP}/build/linux/debug
+  OBJECTS_DIR     = $${ARTKP}/build/osx/debug
 }
 
 release {
-  OBJECTS_DIR     = $${ARTKP}/build/linux/release
+  OBJECTS_DIR     = $${ARTKP}/build/osx/release
 }
 
 DEPENDPATH      += $${ARTKP}/include

@@ -1,20 +1,16 @@
-Install instructions for Linux:
+Install instructions for Unix:
 ===============================
 
 Remarks:
 --------
 
-The make environment for Linux is based on Qt's qmake system.
+The make environment for Unix is based on Qt's qmake system.
 Please install qmake before compiling ARToolKitPlus!
 
 Compile Steps:
 --------------
 
-- Modify build/linux/options.pro to your needs
-- Set ARTKP environment variable to source tree
-
-  for bash: export ARTKP='<path_to_artoolkitplus_source_tree>'
-  for tcsh: setenv ARTKP '<path_to_artoolkitplus_source_tree>'
+- Modify build/linux/options.pro or build/osx/options.pro to your needs
 
 - Start compilation with
 
