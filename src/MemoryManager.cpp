@@ -39,7 +39,7 @@
 
 
 #include <ARToolKitPlus/MemoryManager.h>
-#include <malloc.h>
+#include <stdlib.h>
 
 
 namespace ARToolKitPlus
@@ -79,7 +79,7 @@ artkp_Free(void* rawMemory)
 		memManager->releaseMemory(rawMemory);
 	else
 #endif //_ARTKP_NO_MEMORYMANAGER_
-		::free(rawMemory);
+		free(rawMemory);
 
 	rawMemory = NULL;
 }
