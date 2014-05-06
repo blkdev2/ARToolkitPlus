@@ -1,3 +1,9 @@
+lib/
+bin/
 **/Makefile
 build/**/debug
 build/**/release
+sample/**/build
+sample/**/bin
+tools/**/build
+tools/**/bin

@@ -446,8 +446,9 @@ AR_TEMPL_TRACKER::calcCameraMatrix(const char* nCamParamFile, int nWidth, int nH
 		return(false);
 	}
 
-	pCam->changeFrameSize(AR_TEMPL_TRACKER::screenWidth,AR_TEMPL_TRACKER::screenHeight);
-
+	//pCam->changeFrameSize(AR_TEMPL_TRACKER::screenWidth,AR_TEMPL_TRACKER::screenHeight);
+        pCam->changeFrameSize(this->screenWidth, this->screenHeight);
+        
 	int i;
     for(i = 0; i < 4; i++ )
         pCam->mat[1][i] = (pCam->ysize-1)*(pCam->mat[2][i]) - pCam->mat[1][i];

@@ -3,26 +3,34 @@
 # QMake definitions for IdPatGen
 #
 
-include ($$(ARTKP)/build/linux/options.pro)
+ARTKP = $${_PRO_FILE_PWD_}/../../
+
+unix:!macx {
+  include ($${ARTKP}/build/linux/options.pro)
+}
+
+macx {
+  include ($${ARTKP}/build/osx/options.pro)
+}
 
 TEMPLATE = app
 
 TARGET   = idpatgen
 
-QMAKE_CLEAN = $$(ARTKP)/bin/idpatgen
+QMAKE_CLEAN = $${ARTKP}/bin/idpatgen
 
-LIBS += -L$$(ARTKP)/lib -lARToolKitPlus
+LIBS += -L$${ARTKP}/lib -lARToolKitPlus
 
 debug {
-  OBJECTS_DIR     = $$(ARTKP)/tools/IdPatGen/build/linux/debug
+  OBJECTS_DIR     = $${ARTKP}/tools/IdPatGen/build/linux/debug
 }
 
 release {
-  OBJECTS_DIR     = $$(ARTKP)/tools/IdPatGen/build/linux/release
+  OBJECTS_DIR     = $${ARTKP}/tools/IdPatGen/build/linux/release
 }
 
 
-DESTDIR  = $$(ARTKP)/bin
+DESTDIR  = $${ARTKP}/bin
 
 debug {
   message("Building IdPatGen in debug mode ...")

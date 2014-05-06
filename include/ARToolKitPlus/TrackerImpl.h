@@ -198,8 +198,8 @@ public:
 	 * in an ARToolKit camera calibration file.
 	 * Returns true if loading of the camera file succeeded.
 	 */
-	static bool calcCameraMatrix(const char* nCamParamFile, int nWidth, int nHeight,
-								 ARFloat nNear, ARFloat nFar, ARFloat *nMatrix);
+	bool calcCameraMatrix(const char* nCamParamFile, int nWidth, int nHeight,
+                              ARFloat nNear, ARFloat nFar, ARFloat *nMatrix);
 
 	
 	/// Changes the resolution of the camera after the camerafile was already loaded
@@ -633,7 +633,7 @@ protected:
 
 	ARToolKitPlus::Logger	*logger;
 
-	static int						screenWidth, screenHeight;
+	int						screenWidth, screenHeight;
 	int						thresh;
 
 	ARParam					cparam;
