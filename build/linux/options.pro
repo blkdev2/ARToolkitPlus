@@ -24,7 +24,7 @@ equals(ARCH, x86_64) {
 }
 else {
 #  QMAKE_CXXFLAGS      = -mtune=pentium4 -march=pentium4 -msse2 -msse -fpermissive
-  QMAKE_CXXFLAGS      = -mtune=pentium4 -march=pentium4 -msse2 -msse 
+  QMAKE_CXXFLAGS      = -msse2 -msse 
 }
 
 
