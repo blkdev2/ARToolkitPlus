@@ -144,7 +144,7 @@ AR_TEMPL_TRACKER::arDetectMarker(ARUint8 *dataPtr, int _thresh, ARMarkerInfo **m
 
     for( i = j = 0; i < prev_num; i++ ) {
         prev_info[i].count++;
-        if( prev_info[i].count < 4 ) {
+        if( (prev_info[i].count) < 4 ) {
             prev_info[j] = prev_info[i];
             j++;
         }
