@@ -36,6 +36,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <string>
+#include <cstring>
 
 #if defined(TARGET_HOST_WIN32) || defined(TARGET_HOST_WINCE)
 #include <windows.h>

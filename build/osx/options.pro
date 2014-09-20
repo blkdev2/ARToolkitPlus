@@ -13,8 +13,8 @@ isEmpty(LIBDIR) { LIBDIR = $$PREFIX/lib }
 ###
 # choose between debug and release mode
 
-CONFIG		= debug
-#CONFIG		= release
+#CONFIG		= debug
+CONFIG		= release
 
 ###
 # add additional optimization flags (platform-specific)
