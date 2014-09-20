@@ -48,13 +48,13 @@
 namespace ARToolKitPlus {
 
 
-CameraAdvImpl::CameraAdvImpl()
+inline CameraAdvImpl::CameraAdvImpl()
 {}
 
-CameraAdvImpl::~CameraAdvImpl()
+inline CameraAdvImpl::~CameraAdvImpl()
 {}
 
-bool CameraAdvImpl::
+inline bool CameraAdvImpl::
 loadFromFile(const char* filename)
 {
 	FILE *fp = fopen( filename, "r" );
@@ -106,7 +106,7 @@ loadFromFile(const char* filename)
 }
 
 
-void CameraAdvImpl::
+inline void CameraAdvImpl::
 observ2Ideal(ARFloat ox, ARFloat oy, ARFloat *ix, ARFloat *iy)
 {
 	if(undist_iterations <= 0)
@@ -145,7 +145,7 @@ observ2Ideal(ARFloat ox, ARFloat oy, ARFloat *ix, ARFloat *iy)
 	}
 }
 
-void CameraAdvImpl::
+inline void CameraAdvImpl::
 ideal2Observ(ARFloat ix, ARFloat iy, ARFloat *ox, ARFloat *oy)
 {
 	const ARFloat xu[2] = { (ix - cc[0]) / fc[0], (iy - cc[1]) / fc[1] };
@@ -163,7 +163,7 @@ ideal2Observ(ARFloat ix, ARFloat iy, ARFloat *ox, ARFloat *oy)
 	*oy = (xu[1] * cdist) + (kc[2]*a3 + kc[3]*a1);
 }
 
-Camera* CameraAdvImpl::clone()
+inline Camera* CameraAdvImpl::clone()
 {
 	CameraAdvImpl* pCam = new CameraAdvImpl();
 	pCam->xsize = xsize;
@@ -180,7 +180,7 @@ Camera* CameraAdvImpl::clone()
 	return((Camera*)pCam);
 }
 
-bool CameraAdvImpl::
+inline bool CameraAdvImpl::
 changeFrameSize(const int frameWidth, const int frameHeight)
 {
 	if(frameWidth <=0 || frameHeight <=0) return(false);
@@ -200,7 +200,7 @@ changeFrameSize(const int frameWidth, const int frameHeight)
 	return(true);
 }
 
-void CameraAdvImpl::
+inline void CameraAdvImpl::
 logSettings(Logger* logger)
 {
 	if(logger != NULL)

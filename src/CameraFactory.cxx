@@ -44,7 +44,7 @@
 
 namespace ARToolKitPlus {
 
-Camera* CameraFactory::
+inline Camera* CameraFactory::
 createCamera(const char* filename)
 {
 	CameraAdvImpl *c_ptr = new CameraAdvImpl();

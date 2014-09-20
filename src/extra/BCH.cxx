@@ -43,14 +43,14 @@
 namespace ARToolKitPlus {
 
 
-static bool
+static inline bool
 _isBitSet(_64bits n, int which_bit)
 {
 	return ((n>>which_bit)&1) != 0;
 }
 
 
-static void
+static inline void
 _setBit(_64bits &n, int which_bit)
 {
 	const _64bits one = 1;
@@ -87,7 +87,7 @@ _countOnes(const _64bits src_n)
 }
 */
 
-static int*
+static inline int*
 toBitPattern(int b[], _64bits n, int n_bits)
 {
 	for(int i=0; i<n_bits; i++)
@@ -95,7 +95,7 @@ toBitPattern(int b[], _64bits n, int n_bits)
 	return b;
 }
 
-static _64bits
+static inline _64bits
 fromBitPattern(int b[], int n_bits)
 {
 	_64bits n = 0;
@@ -125,18 +125,18 @@ printBitArray(int bb[], int bb_length)
 */
 
 
-BCH::BCH()
+inline BCH::BCH()
 {
 	initialize(BCH_DEFAULT_M, BCH_DEFAULT_LENGTH, BCH_DEFAULT_T);
 }
 
-BCH::BCH(int _m, int _length, int _t)
+inline BCH::BCH(int _m, int _length, int _t)
 {
 	initialize(_m,_length,_t);
 }
 
 
-void BCH::initialize(int _m, int _length, int _t)
+inline void BCH::initialize(int _m, int _length, int _t)
 {
 	int i, ninf;
 
@@ -196,7 +196,7 @@ void BCH::initialize(int _m, int _length, int _t)
 }
 
 
-void BCH::generate_gf()
+inline void BCH::generate_gf()
 /*
  * Generate field GF(2**m) from the irreducible polynomial p(X) with
  * coefficients in p[0]..p[m].
@@ -232,7 +232,7 @@ void BCH::generate_gf()
 }
 
 
-bool BCH::gen_poly(int _t)
+inline bool BCH::gen_poly(int _t)
 /*
  * Compute the generator polynomial of a binary BCH code. Fist generate the
  * cycle sets modulo 2**m - 1, cycle[][] =  (i, 2*i, 4*i, ..., 2^l*i). Then
@@ -360,7 +360,7 @@ bool BCH::gen_poly(int _t)
 
 
 
-void BCH::encode_bch(int *bb, const int *data)
+inline void BCH::encode_bch(int *bb, const int *data)
 /*
  * Compute redundacy bb[], the coefficients of b(x). The redundancy
  * polynomial b(x) is the remainder after dividing x^(length-k)*data(x)
@@ -390,7 +390,7 @@ void BCH::encode_bch(int *bb, const int *data)
 }
 
 
-int BCH::decode_bch(int *recd)
+inline int BCH::decode_bch(int *recd)
 /*
  * Simon Rockliff's implementation of Berlekamp's algorithm.
  *
@@ -601,7 +601,7 @@ int BCH::decode_bch(int *recd)
 }
 
 
-void BCH::encode(int encoded_bits[BCH_DEFAULT_LENGTH], const _64bits orig_n)
+inline void BCH::encode(int encoded_bits[BCH_DEFAULT_LENGTH], const _64bits orig_n)
 {
 	assert(k == BCH_DEFAULT_K && length == BCH_DEFAULT_LENGTH);
 	int orig_bits[BCH_DEFAULT_K];
@@ -617,7 +617,7 @@ void BCH::encode(int encoded_bits[BCH_DEFAULT_LENGTH], const _64bits orig_n)
 
 }
 
-bool BCH::decode(int &err_n, _64bits &orig_n, const int encoded_bits[BCH_DEFAULT_LENGTH])
+inline bool BCH::decode(int &err_n, _64bits &orig_n, const int encoded_bits[BCH_DEFAULT_LENGTH])
 {
 	assert(k == BCH_DEFAULT_K && length == BCH_DEFAULT_LENGTH);
 	int temp_bits[BCH_DEFAULT_LENGTH];
@@ -628,7 +628,7 @@ bool BCH::decode(int &err_n, _64bits &orig_n, const int encoded_bits[BCH_DEFAULT
 	return(true);
 }
 
-void BCH::encode(_64bits &encoded_n, const _64bits orig_n)
+inline void BCH::encode(_64bits &encoded_n, const _64bits orig_n)
 {
 	assert(k == BCH_DEFAULT_K && length == BCH_DEFAULT_LENGTH);
 	int encoded_bits[BCH_DEFAULT_LENGTH];
@@ -636,7 +636,7 @@ void BCH::encode(_64bits &encoded_n, const _64bits orig_n)
 	encoded_n = fromBitPattern(encoded_bits,BCH_DEFAULT_LENGTH);
 }
 
-bool BCH::decode(int &err_n, _64bits &orig_n,    const _64bits encoded_n)
+inline bool BCH::decode(int &err_n, _64bits &orig_n,    const _64bits encoded_n)
 {
 	assert(k == BCH_DEFAULT_K && length == BCH_DEFAULT_LENGTH);
 	int encoded_bits[BCH_DEFAULT_LENGTH];
